@@ -1,17 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function NameAndIndex() {
+  return (
+    <div>
+      <h2>{`Name: NMNLN Bandara`}</h2>
+      <h2>{`Index: ICT/21/813`}</h2>
+    </div>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div className="counter">
+      <h1>{`Counter App`}</h1>
+      <NameAndIndex />
+      <div className="count">{count}</div>
+      <div className="buttons">
+        <button onClick={decrement}>-</button>
+        <button onClick={increment}>+</button>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.render(<Counter />, document.getElementById('root'));
